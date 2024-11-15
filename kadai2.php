@@ -51,15 +51,16 @@
    //郵便番号API用リクエストURLを生成する
    $req = "http://zip.cgis.biz/xml/zip.php?zn=" . $zn;
    //郵便番号APIを用いてXMLデータをダウンロードする
-   $xml = simplexml_load_file($req);
-   $array = json_decode(json_encode($xml), true);
+   $xml = simplexml_load_file($req); //取得したデータをxmlに変換
+   $json = json_encode($xml); //xmlをjsonに変換
+   $array = json_decode($json, true); //jsonをarrayに変換
 
    echo "<font color=red>取得したXMLデータをprint_r関数を用いて画面上に表示する．</font><br>\n";
    echo "<div id=\"xml\">";
-   echo "<pre>";
-   var_dump(value: $array);
+   echo "<pre>"; //整形して表示するタグ
+   var_dump(value: $array); //格納されたデータの型も表示
    echo "</pre>";
-   // print_r($xml);
+
    echo "</div><br><br>\n";
 
    echo "<font color=red>取得したXMLデータを表形式に整理して画面上に表示する．</font><br>\n";
